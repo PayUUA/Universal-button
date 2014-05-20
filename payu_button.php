@@ -192,7 +192,7 @@ class PayU
 
 	private function convString($string) 
 	{	
-		$string = iconv( "windows-1251", "UTF-8", $string );
+		if( mb_detect_encoding($string) )$string = iconv( mb_detect_encoding($string), "UTF-8", $string );
 		return mb_strlen($string, '8bit') . $string;
 	}
 
